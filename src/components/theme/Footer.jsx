@@ -2,154 +2,131 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import config from '@/config';
-import {usePathname} from "next/navigation";
-import React, {useEffect, useState} from "react";
-import {fetchBannerBySlug} from "@/services/site/BannerData";
-import {fetchSettingData} from "@/services/site/SettingData";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { fetchBannerBySlug } from "@/services/site/BannerData";
+import { fetchSettingData } from "@/services/site/SettingData";
 
-export default function Footer (){
+export default function Footer() {
     const pathname = usePathname();
-    const hasWord = pathname.includes('admin');
+    const isAdmin = pathname.includes("admin");
 
-    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [banners, setBanners] = useState([]);
-    const [siteLogo, setSiteLogo] = useState('logo.png');
-    const [settingData, setSettingData] = useState([]);
-
+    const [settingData, setSettingData] = useState({});
 
     useEffect(() => {
         setLoading(true);
-        fetchBannerBySlug("footer-promo")
-            .then((json) => {
-                if (json.success) setBanners(json.data);
-            })
-            .catch((error) => setError(error))
-            .finally(() => setLoading(false));
-        fetchSettingData().then((setting) => {
-            setSiteLogo(setting.data.logo)
-            setSettingData(setting.data)
-        }).catch((error) => {});
 
+        fetchBannerBySlug("footer-promo").catch(() => {});
+        fetchSettingData()
+            .then((res) => setSettingData(res.data))
+            .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <div className="p-4">Loading Data ...</div>;
+    if (loading) return <div className="p-4 text-center">Loading...</div>;
 
+    /* ================= ADMIN FOOTER ================= */
+    if (isAdmin) {
+        return (
+            <footer className="container mx-auto mt-12 px-4">
+                <hr />
+                <div className="py-4 text-center md:text-left text-xs">
+                    © 2026 Vespop.com. All rights reserved
+                </div>
+            </footer>
+        );
+    }
+
+    /* ================= MAIN FOOTER ================= */
     return (
-        <>
-            {hasWord ?  (
-                <footer className="container mx-auto mt-12">
-                    <hr/>
-                    <div className="container flex flex-col md:flex-row justify-between bottom-footer mt-4">
-                        <div className="py-4 text-center md:text-left">
-                            <div className="text-xs">© 2026 Vespop.com. All rights reserved </div>
-                        </div>
-                    </div>
-                </footer>
-            ) : (
-                <footer className="mx-auto mt-12 px-4 md:px-8">
-                    <div className="grid grid-cols-2 gap-4 my-4">
-                        <div className="text-left">
-                            <div className=" mx-auto px-4 py-12">
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-gray-700">
+        <footer className="mt-12 bg-gray-50 px-4 md:px-8">
+            {/* Top Section */}
+            <div className="max-w-7xl mx-auto py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 text-sm text-gray-700">
 
-                                    {/* Navigate */}
-                                    <div>
-                                        <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                                            Navigate
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            <li><a href="#" className="hover:text-black">Shop</a></li>
-                                            <li><a href="#" className="hover:text-black">About</a></li>
-                                            <li><a href="#" className="hover:text-black">Contact</a></li>
-                                            <li><a href="#" className="hover:text-black">Store Locator</a></li>
-                                        </ul>
-                                    </div>
+                {/* Navigate */}
+                <div>
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        Navigate
+                    </h4>
+                    <ul className="space-y-2">
+                        <li><Link href="#" className="hover:text-black">Shop</Link></li>
+                        <li><Link href="#" className="hover:text-black">About</Link></li>
+                        <li><Link href="#" className="hover:text-black">Contact</Link></li>
+                        <li><Link href="#" className="hover:text-black">Store Locator</Link></li>
+                    </ul>
+                </div>
 
-                                    {/* Social */}
-                                    <div>
-                                        <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                                            Social
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            <li><a href="#" className="hover:text-black">Facebook</a></li>
-                                            <li><a href="#" className="hover:text-black">Instagram</a></li>
-                                            <li><a href="#" className="hover:text-black">Tiktok</a></li>
-                                        </ul>
-                                    </div>
+                {/* Social */}
+                <div>
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        Social
+                    </h4>
+                    <ul className="space-y-2">
+                        <li><Link href="#" className="hover:text-black">Facebook</Link></li>
+                        <li><Link href="#" className="hover:text-black">Instagram</Link></li>
+                        <li><Link href="#" className="hover:text-black">Tiktok</Link></li>
+                    </ul>
+                </div>
 
-                                    {/* My Account */}
-                                    <div>
-                                        <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                                            My Account
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            <li><a href="#" className="hover:text-black">Sign In / Register</a></li>
-                                            <li><a href="#" className="hover:text-black">My Orders</a></li>
-                                            <li><a href="#" className="hover:text-black">Wishlist</a></li>
-                                        </ul>
-                                    </div>
+                {/* My Account */}
+                <div>
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        My Account
+                    </h4>
+                    <ul className="space-y-2">
+                        <li><Link href="#" className="hover:text-black">Sign In / Register</Link></li>
+                        <li><Link href="#" className="hover:text-black">My Orders</Link></li>
+                        <li><Link href="#" className="hover:text-black">Wishlist</Link></li>
+                    </ul>
+                </div>
 
-                                    {/* Legal */}
-                                    <div>
-                                        <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                                            Legal
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            <li><a href="#" className="hover:text-black">Terms & Conditions</a></li>
-                                            <li><a href="#" className="hover:text-black">Privacy Policy</a></li>
-                                            <li><a href="#" className="hover:text-black">Shipping & Returns</a></li>
-                                            <li><a href="#" className="hover:text-black">Help Center</a></li>
-                                        </ul>
-                                    </div>
+                {/* Legal */}
+                <div>
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        Legal
+                    </h4>
+                    <ul className="space-y-2">
+                        <li><Link href="#" className="hover:text-black">Terms & Conditions</Link></li>
+                        <li><Link href="#" className="hover:text-black">Privacy Policy</Link></li>
+                        <li><Link href="#" className="hover:text-black">Shipping & Returns</Link></li>
+                        <li><Link href="#" className="hover:text-black">Help Center</Link></li>
+                    </ul>
+                </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            {/* Legal */}
-                            <div>
-                                <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                                    Bangladesh
-                                </h4>
+                {/* Address */}
+                <div className="sm:col-span-2 lg:col-span-1">
+                    <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        Bangladesh
+                    </h4>
+                    <p className="mb-2">{settingData.address}</p>
+                    <p className="mb-2">{settingData.email}</p>
+                    <p>{settingData.phone}</p>
+                </div>
+            </div>
 
-                                <div>
-                                    {settingData.address}
-                                </div>
-                                <div>
-                                    {settingData.email}
-                                </div>
-                                <div>
-                                    {settingData.phone}
-                                </div>
-                            </div>
+            {/* Bottom Section */}
+            <div className="border-t py-6">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600">
 
-                        </div>
+                    <div className="text-center md:text-left">
+                        © 2026 Vespop.com. All rights reserved.
                     </div>
 
-
-                    <div className="grid grid-cols-3 gap-4 my-4">
-                        <div className="text-left col-span-1">
-                            © 2026 Vespop.com. All rights reserved.
-                        </div>
-                        <div className="text-right col-span-2">
-                            <div className="flex justify-end items-center gap-1 flex-wrap">
-                                {Array.from({ length: 22 }, (_, i) => (
-                                    <Image
-                                        key={i}
-                                        src={`/images/icons/icon${i + 1}.svg`}
-                                        alt={`Footer icon ${i + 1}`}
-                                        width={28}
-                                        height={28}
-                                        className="hover:opacity-80 transition"
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                    <div className="flex flex-wrap justify-center md:justify-end gap-2">
+                        {Array.from({ length: 22 }, (_, i) => (
+                            <Image
+                                key={i}
+                                src={`/images/icons/icon${i + 1}.svg`}
+                                alt={`Footer icon ${i + 1}`}
+                                width={28}
+                                height={28}
+                                className="hover:opacity-80 transition"
+                            />
+                        ))}
                     </div>
-                </footer>
-            )}
-        </>
-    )
-};
+
+                </div>
+            </div>
+        </footer>
+    );
+}
