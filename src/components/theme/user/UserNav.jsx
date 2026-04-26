@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryButton from "@/components/ecommerce/BrowsAllCat";
+import CategoryButton from "@/components/ecommerce/BrowseAllCat";
 import Link from "next/link";
 
 const Navigation = () => {

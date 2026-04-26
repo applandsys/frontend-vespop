@@ -1,7 +1,7 @@
 "use client";
 
-import React, {useEffect, useState} from 'react';
-import CategoryButton from "@/components/ecommerce/BrowsAllCat";
+import React from 'react';
+import BrowseAllCat from "@/components/ecommerce/BrowseAllCat";
 import Link from "next/link";
 
 const Navigation = () => {
@@ -12,7 +12,7 @@ const Navigation = () => {
             <nav>
                 <div className="flex justify-between items-center w-full">
                     <div className="flex w-full">
-                        <CategoryButton/>
+                        <BrowseAllCat/>
                         <div className="flex items-center px-4">
                             <div className="hidden md:flex space-x-8">
                                 <Link href="/"

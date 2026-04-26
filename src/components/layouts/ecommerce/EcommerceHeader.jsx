@@ -107,7 +107,7 @@ const EcommerceHeader = () => {
                         <CartNav />
                     </div>
                 </div>
-                <div className="my-2 hidden md:block">
+                <div className="my-2 hidden md:block bg-black">
                     <Navigation/>
                 </div>
             </header>
