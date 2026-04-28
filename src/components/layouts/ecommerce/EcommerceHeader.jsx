@@ -102,12 +102,12 @@ const EcommerceHeader = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-4 md:mx-[100px]">
+                <div className="mt-4">
                     <div className="hidden md:block">
                         <CartNav />
                     </div>
                 </div>
-                <div className="my-2 hidden md:block bg-black">
+                <div className=" hidden md:block bg-black">
                     <Navigation/>
                 </div>
             </header>
