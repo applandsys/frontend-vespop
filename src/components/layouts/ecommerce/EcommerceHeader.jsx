@@ -102,8 +102,9 @@ const EcommerceHeader = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-4">
-                    <div className="hidden md:block">
+                {/* Top part before navigation */}
+                <div className="mt-4 mx-4">
+                    <div className="hidden md:block mx-2">
                         <CartNav />
                     </div>
                 </div>
