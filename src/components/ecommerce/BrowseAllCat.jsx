@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCategories } from '@/services/ecommerce/getCategories';
 import Link from 'next/link';
 
@@ -25,6 +25,11 @@ export default function CategoriesMenu() {
         <nav className="bg-black shadow-md">
             <div className="max-w-7xl mx-auto px-4">
                 <ul className="flex gap-8 items-center h-14">
+
+                    <li className="relative group">
+                        <Link href="/"
+                              className="text-white font-medium hover:text-green-400 flex items-center gap-1 transition">Home</Link>
+                    </li>
 
                     {categories.map((cat) => (
                         <li key={cat.id} className="relative group">

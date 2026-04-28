@@ -5,7 +5,6 @@ import NavigationMobile from "@/components/ecommerce/NavigationMobile";
 import CartNav from "@/components/ecommerce/CartNav";
 import Navigation from "@/components/theme/Navigation";
 import Image from 'next/image';
-import Link from 'next/link';
 import config from "@/config";
 import {fetchSettingData} from "@/services/site/SettingData";
 import {FiMenu, FiSearch, FiShoppingBag, FiUser} from "react-icons/fi";
