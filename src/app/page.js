@@ -11,8 +11,7 @@ export default function Home() {
         <>
             <EcommerceFrontLayout>
                     <ImgSlider/>
-                <div className="my-4 mx-2">
-                    <h1 className="text-3xl font-bold">Featured Categories</h1>
+                <div className="my-4 mx-8">
                     <div className="categorySlider">
                         <CategoryCarousel/>
                     </div>
