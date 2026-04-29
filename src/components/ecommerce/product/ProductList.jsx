@@ -47,7 +47,7 @@ const ProductList = ({headLine}) => {
     if (error) return <div className="p-4 text-red-500">Error: {error.message || error}</div>;
 
     return (
-        <div className="mt-4">
+        <div>
             <div className="mt-4 mx-4">
                 <div className="w-full py-10">
                     <div className="flex items-center justify-center gap-6">
