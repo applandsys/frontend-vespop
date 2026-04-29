@@ -24,7 +24,7 @@ export default function CategoriesMenu() {
     return (
         <nav className="bg-black shadow-md">
             <div className="max-w-7xl mx-auto px-4">
-                <ul className="flex gap-8 items-center h-14">
+                <ul className="flex gap-8 items-center h-14 font-bold">
 
                     <li className="relative group">
                         <Link href="/"
