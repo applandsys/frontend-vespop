@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import {fetchFeaturedProducts, fetchProductsBySlug} from "@/services/ecommerce/GetProducts";
-import ProductGridCard from "@/components/ecommerce/product/ProducGridCard";
+import ProductGridCard from "@/components/ecommerce/product/ProducGridCard.jsx";
 import {fetchBannerBySlug} from "@/services/site/BannerData";
-import LargeBanner from "@/components/theme/home/LargeBanner";
+import LargeBanner from "@/components/theme/home/LargeBanner.jsx";
 
 const ProductList = ({headLine}) => {
     const [featuredProduct, setFeaturedProduct] = useState([]);
@@ -48,7 +48,7 @@ const ProductList = ({headLine}) => {
 
     return (
         <div>
-            <div className="mt-4 mx-4">
+            <div className="mt-4">
                 <div className="w-full py-10">
                     <div className="flex items-center justify-center gap-6">
                         <span className="h-px w-32  xs:w-16 bg-black"></span>
