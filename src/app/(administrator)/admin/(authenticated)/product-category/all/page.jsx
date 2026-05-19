@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import ProductCategoryForm from "@/components/admin/ecommerce/ProductCategoryForm";
-import CategoryList from "@/components/ecommerce/admin/product/CategoryList";
+import CategoryList from "@/components/admin/product/CategoryList";
 import {fetchAllCategories, fetchAllCategoriesZeroCount} from "@/services/ecommerce/GetCategory";
 
 const ProductCategory = () => {

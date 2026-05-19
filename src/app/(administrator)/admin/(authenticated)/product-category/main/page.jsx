@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import ProductCategoryForm from "@/components/admin/ecommerce/ProductCategoryForm";
 import {fetchCategoriesByType} from "@/services/ecommerce/GetCategory";
-import CategoryListMain from "@/components/ecommerce/admin/product/CategoryListMain";
+import CategoryListMain from "@/components/admin/product/CategoryListMain";
 
 const MainCategory = () => {
 

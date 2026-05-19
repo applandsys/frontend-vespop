@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import PurchaseReturnList from "@/components/admin/ecommerce/PurchaseReturnList.jsx";
 
 const PurchaseReturnPage = () => {
     return (
@@ -8,7 +9,7 @@ const PurchaseReturnPage = () => {
             <div className="flex-1 p-6">
                 <div className="grid grid-cols-1 gap-2 px-2">
                     <div>
-                        <h1>Purchase Return</h1>
+                        <PurchaseReturnList/>
                     </div>
                 </div>
             </div>

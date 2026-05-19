@@ -4,7 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import config from "@/config";
 import {getAllCategories, getCategories} from "@/services/ecommerce/getCategories";
 import {getAttributes} from "@/services/ecommerce/getAttributes";
-import UiCard from "@/components/theme/common/UiCard";
+import UiCard from "@/components/common/UiCard";
 import {TrashIcon} from "@heroicons/react/16/solid";
 import {getProductLabels} from "@/services/ecommerce/getProductLabels";
 import Editor from 'react-simple-wysiwyg';
@@ -15,6 +15,7 @@ import {fetchAllocations} from "@/services/ecommerce/fetchLocations";
 import {fetchAllProductBrand} from "@/services/ecommerce/ProductBrand";
 import { useRouter } from 'next/navigation';
 import ErrorAlert from "@/components/ui/ErrorAlert";
+import {getImageUrl} from "@/utils/R2Resolver";
 // import {router} from "next/client";
 
 const ProductAddEditForm = ({ productId }) => {
@@ -723,7 +724,7 @@ const ProductAddEditForm = ({ productId }) => {
                                                 existingImages && existingImages.length > 0 && existingImages.map((file, index) => (
                                                     <div key={index} className="relative flex justify-center items-center">
                                                         <Image
-                                                            src={`${config.publicPath}/images/products/${file.name}`}
+                                                            src={`${getImageUrl(file.name)}`}
                                                             alt={`Product Image ${index + 1}`}
                                                             width={100}
                                                             height={100}

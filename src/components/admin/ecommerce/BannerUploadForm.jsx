@@ -4,6 +4,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import config from "@/config"; // You may need this to get the ID from the URL
 import { useRouter } from 'next/navigation';
 import {toast} from "react-toastify";
+import {getImageUrl} from "@/utils/R2Resolver";
 
 const BannerUploadForm = ({ bannerId, getBanners }) => {
 
@@ -41,7 +42,7 @@ const BannerUploadForm = ({ bannerId, getBanners }) => {
 
                         setBannerData( data.data);
 
-                        setBannerPreview(`${config.publicPath}/images/banners/${data.data.image}`);
+                        setBannerPreview(`${getImageUrl(data.data.image)}`);
                     }
                 });
         }

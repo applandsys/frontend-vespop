@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import LocationAddEditForm from "@/components/admin/ecommerce/LocationAddEditForm";
 import {fetchAllocations, fetchAllocationsByParentId, fetchPrimaryLocations} from "@/services/ecommerce/fetchLocations";
-import ProductLocationList from "@/components/ecommerce/admin/product/ProductLocationList";
+import ProductLocationList from "@/components/admin/product/ProductLocationList";
 
 const ManageLocation = () => {
 

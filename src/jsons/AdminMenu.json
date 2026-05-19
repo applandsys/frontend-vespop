@@ -167,6 +167,11 @@
         "name": "Manage Banners",
         "icon": "HiPhotograph",
         "href": "/admin/banner-setting"
+      },
+      {
+        "name": "Manage Widget",
+        "icon": "HiPhotograph",
+        "href": "/admin/widget-setting"
       }
     ]
   },
@@ -177,12 +182,12 @@
       {
         "name": "Manage Coupon",
         "icon": "HiPhotograph",
-        "href": "/admin/coupons/list"
+        "href": "/admin/coupons"
       },
       {
         "name": "Manage Deal",
         "icon": "HiPhotograph",
-        "href": "/admin/deals/list"
+        "href": "/admin/deals"
       }
     ]
   },
@@ -245,7 +250,7 @@
   },
   {
     "section": "API Integration",
-    "icon": "HiPhotograph",
+    "icon": "AiTwotoneApi",
     "items": [
       {
         "name": "Manage Courier",
@@ -311,9 +316,19 @@
         "href": "/admin/site-setting"
       },
       {
-        "name": "Banner Setting",
-        "icon": "HiPhotograph",
-        "href": "/admin/banner-setting"
+        "name": "Site Navigation",
+        "icon": "HiViewList",
+        "href": "/admin/navagation-setting"
+      },
+      {
+        "name": "Language",
+        "icon": "HiViewList",
+        "href": "/admin/language-setting"
+      },
+      {
+        "name": "Currency",
+        "icon": "HiViewList",
+        "href": "/admin/currency-setting"
       }
     ]
   }

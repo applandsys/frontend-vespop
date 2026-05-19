@@ -1,9 +1,10 @@
 import React from 'react';
+import PendingReviews from "../../../../../../components/admin/ecommerce/reviews/PendingReviews";
 
 const PendingReviewPage = () => {
     return (
         <div>
-            <h1> Reviews </h1>
+           <PendingReviews/>
         </div>
     );
 };

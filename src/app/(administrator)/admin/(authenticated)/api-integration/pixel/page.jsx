@@ -1,9 +1,10 @@
 import React from 'react';
+import PixelSettingForm from "../../../../../../components/admin/ecommerce/api-integration/PixelSettingForm";
 
 const PixelSetupPage = () => {
     return (
         <div>
-            <h1> Facebook Pixel setup  </h1>
+            <PixelSettingForm/>
         </div>
     );
 };

@@ -11,6 +11,8 @@ import {
     HiPhotograph,
 } from "react-icons/hi";
 
+import { AiTwotoneApi } from "react-icons/ai";
+
 import {
     HomeIcon,
     ShoppingCartIcon,
@@ -59,7 +61,9 @@ export const iconMap = {
     //RI
     RiSecurePaymentLine,
     //
-    BiSolidPurchaseTag
+    BiSolidPurchaseTag,
+
+    AiTwotoneApi
 
 };
 

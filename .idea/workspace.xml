@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{}</component>
+  <component name="ChangeListManager">
+    <list default="true" id="44cc1487-61a3-4098-b988-e0a42fa3cdad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/api-integration/courier/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/api-integration/courier/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/api-integration/pixel/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/api-integration/pixel/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/manage-location/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/manage-location/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/manage-shipping/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/manage-shipping/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/order/list/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/order/list/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-brand/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-brand/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-category/all/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-category/all/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-category/main/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-category/main/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-category/sub/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product-category/sub/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product/attribute/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/product/attribute/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/purchase/purchase-return/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/purchase/purchase-return/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/reviews/approved/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/reviews/approved/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/reviews/pending/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(administrator)/admin/(authenticated)/reviews/pending/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/AllProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/AllProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/BannerList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/BannerList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/BannerUploadForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/BannerUploadForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/LocationAddEditForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/LocationAddEditForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/ProductAddEditForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/ProductAddEditForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/PurchaseList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/PurchaseList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ecommerce/order/AllOrders.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ecommerce/order/AllOrders.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/theme/Navigation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/theme/Navigation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsons/AdminMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsons/AdminMenu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ecommerce/GetCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ecommerce/GetCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/iconMapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/iconMapper.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;applandsys&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/applandsys/frontend-vespop.git&quot;,
+    &quot;accountId&quot;: &quot;a7bf4393-8635-4df0-92d7-c6986542926c&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3DwyUpvuvmGm8ytJ3TBrIrrVkXY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/BuzzIN/frontend-vespop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
@@ -15,5 +87,27 @@
       <envs />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.24374.125" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44cc1487-61a3-4098-b988-e0a42fa3cdad" name="Changes" comment="" />
+      <created>1779207455182</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779207455182</updated>
+      <workItem from="1779207457024" duration="3809000" />
+      <workItem from="1779215722784" duration="2152000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

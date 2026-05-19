@@ -1,5 +1,5 @@
 import React from 'react';
-import ApprovedReviews from "@/components/admin/ecommerce/ApprovedReviews";
+import ApprovedReviews from "../../../../../../components/admin/ecommerce/reviews/ApprovedReviews";
 
 const ApprovedReviewPage = () => {
     return (
