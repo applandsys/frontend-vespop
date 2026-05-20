@@ -5,7 +5,6 @@ import NavigationMobile from "@/components/ecommerce/NavigationMobile";
 import CartNav from "@/components/ecommerce/CartNav";
 import Navigation from "@/components/theme/Navigation";
 import Image from 'next/image';
-import Link from 'next/link';
 import config from "@/config";
 import {fetchSettingData} from "@/services/site/SettingData";
 import {FiMenu, FiSearch, FiShoppingBag, FiUser} from "react-icons/fi";
@@ -102,12 +101,13 @@ const EcommerceHeader = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-4 md:mx-[100px]">
-                    <div className="hidden md:block">
+                {/* Top part before navigation */}
+                <div className="mt-4 mx-4">
+                    <div className="hidden md:block mx-2">
                         <CartNav />
                     </div>
                 </div>
-                <div className="my-2 hidden md:block">
+                <div className=" hidden md:block bg-black">
                     <Navigation/>
                 </div>
             </header>
