@@ -14,8 +14,27 @@ export const fetchFeaturedProducts = async () => {
     return data;
 };
 
+// label Slug
 export const fetchProductsBySlug = async (slug) => {
     const res = await fetch(`${config.apiBaseUrl}/product/label/${slug}`);
+    if (!res.ok) throw new Error('Failed to fetch Product');
+    const {data} = await res.json();
+    return data;
+};
+
+export const fetchProductsBySlugLimit = async (slug, limit = 7) => {
+    const res = await fetch(
+        `${config.apiBaseUrl}/product/label/${slug}?limit=${limit}`
+    );
+
+    if (!res.ok) throw new Error("Failed to fetch Product");
+
+    const { data } = await res.json();
+    return data;
+};
+
+export const fetchProductsByLabel = async (label) => {
+    const res = await fetch(`${config.apiBaseUrl}/product/${label}`);
     if (!res.ok) throw new Error('Failed to fetch Product');
     const {data} = await res.json();
     return data;
