@@ -34,7 +34,7 @@ export default function NavigationForm({
 
     useEffect(() => {
         if (initialData) setForm({ ...initialData });
-        getNavigation().then((res)=>setParents(res.data || [])).catch((err) => console.error(err));
+        getNavigation().then((res)=>setParents(res.data.data || [])).catch((err) => console.error(err));
     }, [initialData]);
 
     const handleChange = (key, value) => {

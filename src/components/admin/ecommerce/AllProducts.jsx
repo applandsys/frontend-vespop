@@ -1,90 +1,57 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Grid } from "gridjs-react";
-import { html } from "gridjs";
-import "gridjs/dist/theme/mermaid.css";
-import "@/styles/gridjs-shadcn.css";
-
-import { getAllProducts } from "@/services/admin/getAllProducts";
-import {
-    Card,
-    CardHeader,
-    CardTitle,
-    CardContent,
-} from "@/components/ui/shadcn/card";
+import {useEffect, useState} from "react";
+import {getAllProducts} from "@/services/admin/getAllProducts";
+import Link from "next/link";
 
 const AllProducts = () => {
-    const [rows, setRows] = useState([]);
+
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        getAllProducts().then((products) => {
-            setRows(
-                products.map((p) => [
-                    p.id,
-                    p.name,
-                    p.slug,
-                    p.buyPrice,
-                    p.sellPrice,
-                    `${p.discount}%`,
-                    p.discountPrice,
-                    p.point,
-                    p.visibility,
-                ])
-            );
-        });
+        getAllProducts().then(r => setProducts(r)).catch(e => console.error(e));
     }, []);
 
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Product List</CardTitle>
-            </CardHeader>
+    useEffect(() => {
+        console.log(products);
+    }, [products]);
 
-            <CardContent>
-                <Grid
-                    data={rows}
-                    search
-                    sort
-                    pagination={{ limit: 10 }}
-                    columns={[
-                        "ID",
-                        "Name",
-                        "Slug",
-                        "Buy Price",
-                        "Sell Price",
-                        "Discount",
-                        "Discount Price",
-                        "Point",
-                        {
-                            name: "Status",
-                            formatter: (cell) =>
-                                html(`
-                  <span class="
-                    inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium
-                    ${cell === "published" ? "bg-green-600 text-white" : "bg-gray-300 text-gray-800"}
-                  ">
-                    ${cell}
-                  </span>
-                `),
-                        },
-                        {
-                            name: "Action",
-                            sort: false,
-                            formatter: (_, row) =>
-                                html(`
-                  <a
-                    href="/admin/product/edit-product/${row.cells[0].data}"
-                    class="inline-flex items-center rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700"
-                  >
-                    Edit
-                  </a>
-                `),
-                        },
-                    ]}
-                />
-            </CardContent>
-        </Card>
+    return (
+        <div className="p-2">
+            <h2 className="text-xl font-bold">Product List</h2>
+            <table className="table-auto border-collapse border border-gray-300 w-full">
+                <thead className="bg-gray-100">
+                    <th className="border border-gray-300 px-1 py-1 text-left">ID</th>
+                    <th className="border border-gray-300 px-1 py-1 text-left">Name</th>
+                    <th className="border border-gray-300 px-1 py-1 text-left">Buy Price</th>
+                    <th className="border border-gray-300 px-1 py-1 text-left">Sell Price</th>
+                    <th className="border border-gray-300 px-1 py-1 text-left">Discount</th>
+                    <th className="border border-gray-300 px-1 py-1 text-left">Point</th>
+                    <th className="border border-gray-300 px-1 py-1 text-left">Action</th>
+                </thead>
+                <tbody>
+                {products.length > 0 && (
+                    products.map((product) => (
+                        <tr className="hover:bg-gray-50" key={product.id}>
+                             <td className="border border-gray-300 px-1 py-1">{product.id}</td>
+                             <td className="border border-gray-300 px-1 py-1">{product.name}</td>
+                             <td className="border border-gray-300 px-1 py-1">{product.buyPrice}</td>
+                             <td className="border border-gray-300 px-1 py-1">{product.sellPrice}</td>
+                             <td className="border border-gray-300 px-1 py-1">{product.discount}</td>
+                             <td className="border border-gray-300 px-1 py-1">{product.point} </td>
+                             <td>
+                                 <Link className="mx-1 px-2 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600"
+                                       href={`/admin/product/edit-product/${product.id}`}
+                                 >
+                                     Edit
+                                 </Link>
+                             </td>
+                        </tr>
+                    ))
+                )}
+                </tbody>
+            </table>
+        </div>
     );
 };
 

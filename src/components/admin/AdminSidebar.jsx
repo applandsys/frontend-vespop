@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import AdminMenu from '@/jsons/AdminMenu.json';
 import {iconMap} from "@/utils/iconMapper.js";
-import {fetchSettingData} from "@/services/site/SettingData";
+import {fetchSettingData} from "@/services/setting/site/SettingData";
 import Image from 'next/image';
 import config from "@/config";
 
