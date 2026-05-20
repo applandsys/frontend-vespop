@@ -7,7 +7,7 @@ export default function NavigationList({ refresh, onEdit }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getNavigation().then((res)=>setData(res.data || [])).catch((err) => console.error(err));
+        getNavigation().then((res)=>setData(res.data.data || [])).catch((err) => console.error(err));
     }, [refresh]);
 
     const renderChildren = (items, level = 1) => {
