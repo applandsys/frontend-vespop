@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {getAllCourier} from "@/services/admin/Courer";
 import CourierList from "@/components/admin/ecommerce/CourierList";
-import CourierAddForm from "@/components/admin/ecommerce/CourierAddForm";
+import CourierAddForm from "@/components/admin/ecommerce/CourierAddForm.jsx";
 
 
 const ApiIntegrationCourier = () => {

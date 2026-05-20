@@ -1,10 +1,17 @@
 import config from "@/config";
 
-export const fetchProductCategory = async (slug,searchString,maxprice) => {
-    const res = await fetch(`${config.apiBaseUrl}/category/products/${slug}?search=${searchString}&maxprice=${maxprice}`,{
-        cache: 'no-store',
-    });
-    if (!res.ok) throw new Error('Failed to fetch Categories');
+export const fetchProductCategory = async (slug, searchString, maxprice) => {
+    const params = new URLSearchParams();
+
+    if (searchString) params.append("search", searchString);
+    if (maxprice && maxprice > 0) params.append("maxprice", maxprice);
+
+    const res = await fetch(
+        `${config.apiBaseUrl}/category/products/${slug}?${params.toString()}`,
+        { cache: "no-store" }
+    );
+
+    if (!res.ok) throw new Error("Failed to fetch Categories");
     return await res.json();
 };
 

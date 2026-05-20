@@ -18,6 +18,11 @@ const AllOrders = ({type=null}) => {
     const [showModal, setShowModal] = useState(false);
     const [loadingFraud, setLoadingFraud] = useState(false);
 
+    const [showReturnModal, setShowReturnModal] = useState(false);
+    const [returnOrderId, setReturnOrderId] = useState(null);
+    const [returnReason, setReturnReason] = useState("");
+    const [submittingReturn, setSubmittingReturn] = useState(false);
+
 
     const getStatusBadge = (status) => {
         const map = {
@@ -31,7 +36,6 @@ const AllOrders = ({type=null}) => {
         return `<span class="${color} text-white text-xs px-2 py-1 rounded-md capitalize">${status}</span>`;
     };
 
-
     useEffect(() => {
         getOrders(type)
             .then(r => setOrders(r.data))
@@ -41,12 +45,21 @@ const AllOrders = ({type=null}) => {
     useEffect(() => {
         const handler = (e) => {
             const btn = e.target.closest("button");
-            if (btn && btn.classList.contains("fraud-check-btn")) {
+
+            if (btn?.classList.contains("fraud-check-btn")) {
                 handleCheckFraud(btn.dataset.id);
             }
-            if (btn && btn.classList.contains("courier-btn")) {
+
+            if (btn?.classList.contains("courier-btn")) {
                 handleCourierRedirect(btn.dataset.id);
             }
+
+            if (btn?.classList.contains("return-btn")) {
+                setReturnOrderId(btn.dataset.id);
+                setReturnReason("");
+                setShowReturnModal(true);
+            }
+
             const select = e.target.closest(".status-select");
             if (select) {
                 const orderId = select.dataset.id;
@@ -56,12 +69,12 @@ const AllOrders = ({type=null}) => {
             }
         };
 
-        document.addEventListener("change", handler);
         document.addEventListener("click", handler);
+        document.addEventListener("change", handler);
 
         return () => {
-            document.removeEventListener("change", handler);
             document.removeEventListener("click", handler);
+            document.removeEventListener("change", handler);
         };
     }, []);
 
@@ -97,6 +110,39 @@ const AllOrders = ({type=null}) => {
         }
     };
 
+    const submitReturn = async () => {
+        if (!returnReason.trim()) {
+            alert("Please enter return reason");
+            return;
+        }
+
+        try {
+            setSubmittingReturn(true);
+
+            await fetch(`${config.apiBaseUrl}/admin/order/return`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    orderId: returnOrderId,
+                    reason: returnReason,
+                }),
+            });
+
+            setShowReturnModal(false);
+            setReturnReason("");
+            setReturnOrderId(null);
+
+            // refresh list
+            const res = await getOrders(type);
+            setOrders(res.data);
+        } catch (err) {
+            console.error(err);
+            alert("Failed to submit return");
+        } finally {
+            setSubmittingReturn(false);
+        }
+    };
+
 
     const data = orders.map((order, index) => [
         index + 1,
@@ -109,13 +155,18 @@ const AllOrders = ({type=null}) => {
             <div class="flex gap-2 items-center text-xs">
             
             <select class="status-select border rounded px-2 py-1" data-id="${order.id}">
-            <option value="">Change Status</option>
-            <option value="paid" ${order.status==="paid"?"selected":""}>Paid</option>
-            <option value="shipped" ${order.status==="shipped"?"selected":""}>Shipped</option>
-            <option value="cancel" ${order.status==="cancel"?"selected":""}>Cancel</option>
-            <option value="return" ${order.status==="return"?"selected":""}>Return</option>
-            <option value="delivered" ${order.status==="delivered"?"selected":""}>Delivered</option>
+                <option value="">Change Status</option>
+                <option value="paid" ${order.status==="paid"?"selected":""}>Paid</option>
+                <option value="shipped" ${order.status==="shipped"?"selected":""}>Shipped</option>
+                <option value="cancel" ${order.status==="cancel"?"selected":""}>Cancel</option>
+                <option value="delivered" ${order.status==="delivered"?"selected":""}>Delivered</option>
             </select>
+            
+            <button 
+                class="return-btn bg-orange-500 px-2 py-1 text-white rounded"
+                data-id="${order.id}">
+                Return
+            </button>
 
             <button 
                 class="detail-btn bg-yellow-500 px-2 py-1 text-white rounded"
@@ -251,6 +302,52 @@ const AllOrders = ({type=null}) => {
                     </div>
                 </div>
             )}
+
+
+            {showReturnModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="bg-white w-[500px] rounded-xl shadow-2xl p-6 relative">
+                        <button
+                            onClick={() => setShowReturnModal(false)}
+                            className="absolute top-3 right-4 text-gray-400 hover:text-black text-xl"
+                        >
+                            ✕
+                        </button>
+
+                        <h3 className="text-xl font-bold mb-4">Return Order</h3>
+
+                        <label className="block text-sm font-medium mb-1">
+                            Reason for return
+                        </label>
+
+                        <textarea
+                            value={returnReason}
+                            onChange={(e) => setReturnReason(e.target.value)}
+                            rows={4}
+                            className="w-full border rounded-lg p-3 text-sm focus:ring focus:ring-orange-200"
+                            placeholder="Write reason here..."
+                        />
+
+                        <div className="mt-5 flex justify-end gap-3">
+                            <button
+                                onClick={() => setShowReturnModal(false)}
+                                className="px-4 py-2 rounded border"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                onClick={submitReturn}
+                                disabled={submittingReturn}
+                                className="px-4 py-2 rounded bg-orange-600 text-white disabled:opacity-50"
+                            >
+                                {submittingReturn ? "Submitting..." : "Submit Return"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 };
