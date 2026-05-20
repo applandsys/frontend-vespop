@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useEffect, useState} from 'react';
-import ProductBrandList from "@/components/ecommerce/admin/product/ProductBrandList";
+import ProductBrandList from "@/components/admin/product/ProductBrandList";
 import {fetchAllProductBrand} from "@/services/ecommerce/ProductBrand";
 import ProductBrandAddEditForm from "@/components/admin/ecommerce/ProductBrandAddEditForm";
 

@@ -7,6 +7,7 @@ import Image from "next/image";
 import config from "@/config";
 import { useRouter } from 'next/navigation'
 import {toast} from "react-toastify";
+import {getImageUrl} from "@/utils/R2Resolver";
 
 
 const BannerList = ({banners,getBanners}) => {
@@ -95,7 +96,7 @@ const BannerList = ({banners,getBanners}) => {
                                 <td className="px-4 py-2">{banner.slug}</td>
                                 <td className="px-4 py-2">
                                     {banner.image && (
-                                        <Image className="h-6 w-6" src={`${config.publicPath}/images/banners/${banner.image}`} alt={banner.name} width={32} height={32} />
+                                        <Image className="h-6 w-6" src={getImageUrl(banner.image)} alt={banner.name} width={32} height={32} />
                                     )}
                                 </td>
                                 <td className="px-4 py-2">{banner.background_color}</td>

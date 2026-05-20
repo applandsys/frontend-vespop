@@ -1,7 +1,7 @@
 "use client";
 import React, {useEffect} from 'react';
 import ProductAttributeForm from "@/components/admin/ecommerce/ProductAttributeForm";
-import ProductAttributeList from "@/components/ecommerce/admin/product/ProductAttributeList";
+import ProductAttributeList from "@/components/admin/product/ProductAttributeList";
 import {getAttributes} from "@/services/ecommerce/getAttributes";
 
 const ProductAttribute = () => {

@@ -2,7 +2,7 @@
 
 import React, {useEffect, useRef, useState} from 'react';
 import config from "@/config";
-import UiCard from "@/components/theme/common/UiCard";
+import UiCard from "@/components/common/UiCard";
 import {TrashIcon} from "@heroicons/react/16/solid";
 import {fetchPrimaryLocations} from "@/services/ecommerce/fetchLocations";
 
