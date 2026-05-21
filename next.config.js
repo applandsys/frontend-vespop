@@ -1,11 +1,15 @@
-// next.config.js
-/** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['localhost','vespop.com','backend.vespop.com'], // Allow images from localhost
-    },
-    eslint: {
-        ignoreDuringBuilds: true,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'vespop.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'backend.vespop.com',
+            },
+        ],
     }
 };
 
