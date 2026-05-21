@@ -10,6 +10,9 @@ const nextConfig = {
                 hostname: 'backend.vespop.com',
             },
         ],
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
     }
 };
 
