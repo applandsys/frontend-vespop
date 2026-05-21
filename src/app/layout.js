@@ -1,8 +1,6 @@
 import "./globals.css";
-import { Quicksand } from 'next/font/google';
 
 import {Toaster} from "react-hot-toast";
-
 
 export default function RootLayout({ children }) {
   return (
