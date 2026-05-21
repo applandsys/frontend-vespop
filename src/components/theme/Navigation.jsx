@@ -1,10 +1,11 @@
 "use client";
 
-import React from 'react';
-import BrowseAllCat from "@/components/ecommerce/BrowseAllCat";
-import Link from "next/link";
-import { ChevronRight, ChevronDown } from "lucide-react";
-import { getNavigation } from "@/services/navigation/NavigationService";
+import React, {useEffect, useState} from 'react';
+import {getNavigation} from "../../services/navigation/NavigationService";
+
+function BrowseAllCat() {
+    return null;
+}
 
 const Navigation = () => {
     const [navItems, setNavItems] = useState([]);
