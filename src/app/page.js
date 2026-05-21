@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <>
             <EcommerceFrontLayout>
-                    <ImgSlider/>
+                <ImgSlider/>
                 <div className="my-4 mx-8">
                     <div className="categorySlider">
                         <CategoryCarousel/>
