@@ -4,9 +4,9 @@ import EcommerceFrontLayout from "@/layouts/EcommerceFrontLayout";
 function EcommerceLayout({children}) {
     return (
         <EcommerceFrontLayout>
-        <div>
-            {children}
-        </div>
+            <>
+                {children}
+            </>
         </EcommerceFrontLayout>
     );
 }

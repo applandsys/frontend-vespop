@@ -1,10 +1,11 @@
 
 import React from "react";
-import { ReduxProvider } from '@/providers/ReduxProvider';
-import Footer from "@/components/theme/Footer";
-import Header from "@/components/layouts/Header";
-import {SnackbarProvider} from "@/components/ui/SnackbarProvider";
-import MobileFooterMenu from "@/components/ecommerce/MobileFooterMenu";
+import {ReduxProvider} from "../providers/ReduxProvider";
+import {SnackbarProvider} from "../components/ui/SnackbarProvider";
+import Header from "../components/layouts/Header";
+import Footer from "../components/theme/Footer";
+import MobileFooterMenu from "../components/ecommerce/MobileFooterMenu";
+
 
 export const metadata = {
     title: "Ecommerce Website ",
