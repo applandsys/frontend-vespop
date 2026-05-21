@@ -19,15 +19,15 @@ const NavigationDropdown = () => {
     return (
         <nav className="w-full bg-black">
             <div className="flex justify-center items-center h-14">
-                <ul className="hidden md:flex space-x-8 text-white relative">
+                <ul className="hidden md:flex space-x-8 text-white relative uppercase font-bold">
                     {navItems.map((item) => (
-                        <li key={item.id} className="relative">
+                        <li key={item.id} className="relative uppercase">
                             {/* Parent Item */}
                             <button
                                 onClick={() =>
                                     setOpenId(openId === item.id ? null : item.id)
                                 }
-                                className="flex items-center gap-1 hover:text-gray-300"
+                                className="flex items-center gap-1 hover:text-gray-300 uppercase"
                             >
                                 {item.childrens?.length ? (
                                     <>

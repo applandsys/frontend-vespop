@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/shadcn/button";
 import { Input } from "@/components/ui/shadcn/input";
 import { Label } from "@/components/ui/shadcn/label";
@@ -11,47 +11,101 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/shadcn/select";
-import config from "@/config";
-import {getNavigation} from "@/services/navigation/NavigationService";
+import { getNavigation } from "@/services/navigation/NavigationService";
 
+/* --------------------------------------------
+   Helper: flatten tree -> flat list
+--------------------------------------------- */
+const flattenMenus = (items = []) => {
+    let result = [];
 
-export default function NavigationForm({
-                                           initialData,
-                                           onSubmit,
-                                       }) {
-    const [parents, setParents] = useState([]);
+    items.forEach((item) => {
+        const { childrens, ...rest } = item;
+        result.push(rest);
+
+        if (childrens?.length) {
+            result = result.concat(flattenMenus(childrens));
+        }
+    });
+
+    return result;
+};
+
+export default function NavigationForm({ initialData, onSubmit }) {
+    const [menus, setMenus] = useState([]);
+
     const [form, setForm] = useState({
         label: "",
         slug: "",
         url: "",
         position: "header",
-        parentId: "",
+        parentLevel1: "",   // top-level
+        parentLevel2: "",   // second-level
+        parentId: null,     // final saved parent
         icon: "",
         cssClasses: "",
         textColor: "",
         type: "page",
     });
 
+    /* --------------------------------------------
+       Fetch & normalize navigation
+    --------------------------------------------- */
     useEffect(() => {
-        if (initialData) setForm({ ...initialData });
-        getNavigation().then((res)=>setParents(res.data.data || [])).catch((err) => console.error(err));
+        getNavigation()
+            .then((res) => {
+                const flat = flattenMenus(res.data || []);
+                setMenus(flat);
+            })
+            .catch(console.error);
+
+        if (initialData) {
+            setForm((prev) => ({
+                ...prev,
+                ...initialData,
+                parentLevel1: initialData.parentId || "",
+            }));
+        }
     }, [initialData]);
 
     const handleChange = (key, value) => {
         setForm((prev) => ({ ...prev, [key]: value }));
     };
 
+    /* --------------------------------------------
+       Level calculations
+    --------------------------------------------- */
+    const level1Menus = useMemo(
+        () => menus.filter((m) => m.parentId === null),
+        [menus]
+    );
+
+    const level2Menus = useMemo(
+        () =>
+            menus.filter(
+                (m) => String(m.parentId) === String(form.parentLevel1)
+            ),
+        [menus, form.parentLevel1]
+    );
+
+    /* --------------------------------------------
+       Submit
+    --------------------------------------------- */
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const finalParentId =
+            form.parentLevel2 || form.parentLevel1 || null;
+
         onSubmit({
             ...form,
-            parentId: form.parentId || null,
+            parentId: finalParentId,
         });
     };
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
+
             {/* Label */}
             <div>
                 <Label>Menu Label</Label>
@@ -100,19 +154,22 @@ export default function NavigationForm({
                 </Select>
             </div>
 
-            {/* Parent Menu */}
+            {/* LEVEL 1 */}
             <div>
-                <Label>Parent Menu (Optional)</Label>
+                <Label>Parent Menu (Level 1)</Label>
                 <Select
-                    value={form.parentId || ""}
-                    onValueChange={(v) => handleChange("parentId", v)}
+                    value={form.parentLevel1}
+                    onValueChange={(v) => {
+                        handleChange("parentLevel1", v);
+                        handleChange("parentLevel2", "");
+                    }}
                 >
                     <SelectTrigger>
-                        <SelectValue placeholder="No parent (Top level)" />
+                        <SelectValue placeholder="Top level" />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="">Top Level</SelectItem>
-                        {parents.length && parents.map((item) => (
+                        {level1Menus.map((item) => (
                             <SelectItem key={item.id} value={String(item.id)}>
                                 {item.label}
                             </SelectItem>
@@ -120,6 +177,29 @@ export default function NavigationForm({
                     </SelectContent>
                 </Select>
             </div>
+
+            {/* LEVEL 2 */}
+            {form.parentLevel1 && (
+                <div>
+                    <Label>Sub Parent Menu (Level 2)</Label>
+                    <Select
+                        value={form.parentLevel2}
+                        onValueChange={(v) => handleChange("parentLevel2", v)}
+                    >
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select sub parent" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="">None</SelectItem>
+                            {level2Menus.map((item) => (
+                                <SelectItem key={item.id} value={String(item.id)}>
+                                    {item.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
+            )}
 
             {/* Type */}
             <div>
@@ -141,7 +221,7 @@ export default function NavigationForm({
 
             {/* Icon */}
             <div>
-                <Label>Icon (optional)</Label>
+                <Label>Icon</Label>
                 <Input
                     value={form.icon}
                     onChange={(e) => handleChange("icon", e.target.value)}
@@ -161,7 +241,6 @@ export default function NavigationForm({
             <div>
                 <Label>Text Color</Label>
                 <Input
-                    placeholder="e.g. text-red-500"
                     value={form.textColor}
                     onChange={(e) => handleChange("textColor", e.target.value)}
                 />
