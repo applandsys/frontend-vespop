@@ -13,10 +13,10 @@ const FeaturedCategoryWidget = ({category}) => {
                 width={600}
                 height={400}
                 className="
-          w-full h-full object-cover
-          transform transition-transform duration-500 ease-out
-          group-hover:scale-95
-        "
+                          w-full h-full object-cover
+                          transform transition-transform duration-500 ease-out
+                          group-hover:scale-95
+                        "
                 priority
             />
 
