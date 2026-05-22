@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
-import config from "@/config";
-import { fetchBannerBySlug } from "@/services/site/BannerData";
-import {getImageUrl} from "@/utils/R2Resolver";
+import {getImageUrl} from "../../utils/R2Resolver";
+import {fetchBannerBySlug} from "../../services/site/BannerData";
+
 
 export default function ImgSlider() {
     const [current, setCurrent] = useState(0);
