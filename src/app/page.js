@@ -1,9 +1,9 @@
 import "./globals.css";
 import React from "react";
 import ImgSlider from "@/components/ecommerce/ImgSlider";
-import CategoryCarousel from "@/components/ecommerce/CategoryCarousel";
 import ProductList from "@/components/ecommerce/product/ProductList";
 import EcommerceFrontLayout from "@/layouts/EcommerceFrontLayout";
+import FeaturedCategoryWidgetList from "@/components/ecommerce/product/FeaturedCategoryWidgetList";
 
 export default function Home() {
 
@@ -11,12 +11,10 @@ export default function Home() {
         <>
             <EcommerceFrontLayout>
                 <ImgSlider/>
-                <div className="my-4 mx-8">
-                    <div className="categorySlider">
-                        <CategoryCarousel/>
-                    </div>
+                <div className="mt-2 mx-2 md:mx-24">
+                    <FeaturedCategoryWidgetList />
                 </div>
-                <div className="my-4 mt-8 mx-2">
+                <div className=" mx-2">
                     <ProductList />
                 </div>
             </EcommerceFrontLayout>
