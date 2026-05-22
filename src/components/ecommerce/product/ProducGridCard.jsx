@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import config from "@/config";
 import { addToCart } from "@/redux/store/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "@/components/ui/SnackbarProvider";
