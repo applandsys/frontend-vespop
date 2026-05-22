@@ -13,11 +13,11 @@ const FeaturedCategoryWidgetList = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {
                 categories.length && categories.map(category => (
                         <>
-                            <div className="text-white p-6 rounded-lg text-center">
+                            <div className="text-white p-3  text-center">
                                 <FeaturedCategoryWidget category={category} key={category.id} />
                             </div>
                         </>
