@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import {fetchFeaturedProducts, fetchProductsBySlug} from "@/services/ecommerce/GetProducts";
-import ProductGridCard from "@/components/ecommerce/product/ProducGridCard.jsx";
-import {fetchBannerBySlug} from "@/services/site/BannerData";
-import LargeBanner from "@/components/theme/home/LargeBanner.jsx";
+import {fetchFeaturedProducts, fetchProductsBySlug} from "../../../services/ecommerce/GetProducts";
+import {fetchBannerBySlug} from "../../../services/site/BannerData";
+import ProductGridCard from "./ProducGridCard";
+import LargeBanner from "../../theme/home/LargeBanner";
+
 
 const ProductList = ({headLine}) => {
     const [featuredProduct, setFeaturedProduct] = useState([]);
@@ -20,7 +21,7 @@ const ProductList = ({headLine}) => {
             .then((data) => setFeaturedProduct(data))
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
-        fetchProductsBySlug('trending-now')
+        fetchProductsBySlug('new-arrivals')
         .then((data) => setTrendingProduct(data))
         .catch((error) => setError(error))
         .finally(() => setLoading(false));

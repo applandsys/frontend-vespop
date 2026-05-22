@@ -13,6 +13,7 @@ import {
     EyeIcon,
 } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartSolid } from "@heroicons/react/24/solid";
+import {getImageUrl} from "@/utils/R2Resolver";
 
 const ProductGridCard = ({ product }) => {
     const [isWishlisted, setIsWishlisted] = useState(false);
@@ -126,7 +127,7 @@ const ProductGridCard = ({ product }) => {
                     <div className="relative aspect-[3/4] bg-gray-100 overflow-hidden">
                         {mainImage && (
                             <Image
-                                src={`${config.publicPath}/images/products/${mainImage.name}`}
+                                src={`${getImageUrl(mainImage.name)}`}
                                 alt={mainImage.altText || name}
                                 fill
                                 className={`object-cover transition-all duration-500 ${
@@ -138,7 +139,7 @@ const ProductGridCard = ({ product }) => {
 
                         {hoverImage && (
                             <Image
-                                src={`${config.publicPath}/images/products/${hoverImage.name}`}
+                                src={`${getImageUrl(hoverImage.name)}`}
                                 alt={name}
                                 fill
                                 className={`object-cover transition-all duration-500 ${

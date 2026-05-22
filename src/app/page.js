@@ -14,7 +14,7 @@ export default function Home() {
                 <div className="mt-2 mx-2 md:mx-24">
                     <FeaturedCategoryWidgetList />
                 </div>
-                <div className=" mx-2">
+                <div className=" mx-2 md:mx-24">
                     <ProductList />
                 </div>
             </EcommerceFrontLayout>
