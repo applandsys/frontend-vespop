@@ -1,28 +1,10 @@
 "use client";
 
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Image from 'next/image';
-import {getImageUrl} from "../../../utils/R2Resolver";
-import {fetchBannerBySlug} from "../../../services/site/BannerData";
+import {getImageUrl} from "@/utils/R2Resolver";
 
-const PromoCards = () => {
-
-    const [banners, setBannersOne] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        fetchBannerBySlug('home-1').then((json) => {
-            if (json.success) {
-                setBannersOne(json.data);
-            }
-        }).catch(error => setError(error)
-        ).finally(setLoading(false));
-    }, []);
-
-    if (loading) return <div className="p-4">Loading ...</div>;
-
-
+const LargeBanner = ({banners=[]}) => {
     return (
         <div className="">
             {banners.length && banners.map((banner, index) => (
@@ -40,8 +22,7 @@ const PromoCards = () => {
                 </div>
             ))}
         </div>
-
     );
 };
 
-export default PromoCards;
+export default LargeBanner;

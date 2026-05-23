@@ -1,17 +1,17 @@
 'use client';
 import React, {useEffect, useState} from 'react';
 import ProductGridCard from "./ProducGridCard";
-import {fetchProductsBySlug} from "../../../services/ecommerce/GetProducts";
+import {fetchFeaturedProducts} from "@/services/ecommerce/GetProducts";
 
-const NewArrival = () => {
+const FeaturedProducts = () => {
 
-    const [trendingProduct, setTrendingProduct] = useState([]);
+    const [featuredProduct, setFeaturedProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetchProductsBySlug('new-arrivals')
-            .then((data) => setTrendingProduct(data))
+        fetchFeaturedProducts()
+            .then((data) => setFeaturedProduct(data))
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
     }, []);
@@ -19,7 +19,7 @@ const NewArrival = () => {
     return (
         <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ">
-                {trendingProduct && trendingProduct.map((product) => (
+                {featuredProduct && featuredProduct.map((product) => (
                     <ProductGridCard key={product.id || product.slug} product={product} />
                 ))}
             </div>
@@ -31,4 +31,4 @@ const NewArrival = () => {
     );
 };
 
-export default NewArrival;
+export default FeaturedProducts;
