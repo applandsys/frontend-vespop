@@ -11,6 +11,16 @@ export const getCategories = async () => {
     return data;
 };
 
+export const getFeaturedCategories = async () => {
+    const res = await fetch(
+        `${config.apiBaseUrl}/category/featured`,
+        { cache: "no-store" }
+    );
+    if (!res.ok) throw new Error('Failed to fetch Categories');
+    const data = await res.json();
+    return data;
+};
+
 /* No Cache
     const res = await fetch(
       `${config.apiBaseUrl}/product/categories`,

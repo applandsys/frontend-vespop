@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/16/solid";
-import config from "@/config";
-import { fetchBannerBySlug } from "@/services/site/BannerData";
+import {getImageUrl} from "../../utils/R2Resolver";
+import {fetchBannerBySlug} from "../../services/site/BannerData";
+
 
 export default function ImgSlider() {
     const [current, setCurrent] = useState(0);
@@ -56,7 +57,7 @@ export default function ImgSlider() {
                         </div>
                     </div>
                     <Image
-                        src={`${config.publicPath}/images/banners/${item.image}`}
+                        src={`${getImageUrl(item.image)}`}
                         alt={`Slide ${index + 1}`}
                         fill
                         className="object-cover pointer-events-none"

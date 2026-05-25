@@ -11,7 +11,7 @@ import { fetchSettingData } from "@/services/site/SettingData";
 import { getCategories } from "@/services/ecommerce/getCategories";
 import config from "@/config";
 
-export default function NavbarLeft({isOpen,setClose}) {
+export default function NavigationMobile({isOpen,setClose}) {
 
     const [categories, setCategories] = useState([]);
     const [siteLogo, setSiteLogo] = useState('logo.png');

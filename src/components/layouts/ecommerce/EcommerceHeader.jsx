@@ -1,17 +1,18 @@
 "use client";
 
 import React, {useEffect, useState} from 'react';
-import NavigationMobile from "@/components/ecommerce/NavigationMobile";
-import CartNav from "@/components/ecommerce/CartNav";
-import Navigation from "@/components/theme/Navigation";
+
 import Image from 'next/image';
-import config from "@/config";
-import {fetchSettingData} from "@/services/site/SettingData";
 import {FiMenu, FiSearch, FiShoppingBag, FiUser} from "react-icons/fi";
 import * as PropTypes from "prop-types";
-import AccountSidebarMobile from "@/components/ecommerce/AccountSidebarMobile";
-import CartSidebarMobile from "@/components/ecommerce/CartSidebarMobile";
-
+import CartNav from "../../ecommerce/CartNav";
+import AccountSidebarMobile from "../../ecommerce/AccountSidebarMobile";
+import CartSidebarMobile from "../../ecommerce/CartSidebarMobile";
+import NavigationMobile from "../../ecommerce/NavigationMobile";
+import {fetchSettingData} from "../../../services/site/SettingData";
+import config from "../../../config";
+import CategoryNavbar from "../../theme/CategoryNavbar";
+import NavigationDropdown from "../../theme/NavigationDropdown";
 
 function AccountSidebar(props) {
     return null;
@@ -107,8 +108,8 @@ const EcommerceHeader = () => {
                         <CartNav />
                     </div>
                 </div>
-                <div className=" hidden md:block bg-black">
-                    <Navigation/>
+                <div>
+                  <NavigationDropdown/>
                 </div>
             </header>
         </>
